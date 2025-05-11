@@ -66,24 +66,23 @@ export default function Pagination({
 
             {/* Pagination controls */}
             <div className="flex flex-wrap justify-center gap-2 p-4">
-                {/* First page button - hidden on mobile */}
                 <button
                     onClick={onFirstPage}
                     disabled={pagination.current_page === 1}
-                    className={`hidden sm:block px-3 py-2 rounded ${
+                    className={`px-4 py-2 rounded ${
                         pagination.current_page === 1
                             ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                             : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
                     }`}
                 >
-                    «
+                    <span className="w-4 h-4">«</span>
                 </button>
 
                 {/* Previous button */}
                 <button
                     onClick={onPrevPage}
                     disabled={pagination.current_page === 1}
-                    className={`px-3 sm:px-4 py-2 rounded flex items-center justify-center min-w-[70px] ${
+                    className={`px-3 sm:px-4 py-2 rounded flex items-center justify-center sm:min-w-[70px] ${
                         pagination.current_page === 1
                             ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                             : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
@@ -103,7 +102,7 @@ export default function Pagination({
                             d="M15 19l-7-7 7-7"
                         />
                     </svg>
-                    <span>Prev</span>
+                    <span className="hidden sm:block">Prev</span>
                 </button>
 
                 {/* Current page indicator */}
@@ -117,13 +116,13 @@ export default function Pagination({
                 <button
                     onClick={onNextPage}
                     disabled={!pagination.has_next_page}
-                    className={`px-3 sm:px-4 py-2 rounded flex items-center justify-center min-w-[70px] ${
+                    className={`px-3 sm:px-4 py-2 rounded flex items-center justify-center sm:min-w-[70px] ${
                         !pagination.has_next_page
                             ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                             : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
                     }`}
                 >
-                    <span>Next</span>
+                    <span className="hidden sm:block">Next</span>
                     <svg
                         className="w-4 h-4 ml-1"
                         fill="none"
@@ -140,17 +139,16 @@ export default function Pagination({
                     </svg>
                 </button>
 
-                {/* Last page button - hidden on mobile */}
                 <button
                     onClick={onLastPage}
                     disabled={pagination.current_page === pagination.last_visible_page}
-                    className={`hidden sm:block px-3 py-2 rounded ${
+                    className={`px-4 py-2 rounded ${
                         pagination.current_page === pagination.last_visible_page
                             ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                             : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
                     }`}
                 >
-                    »
+                    <span className="w-4 h-4">»</span>
                 </button>
             </div>
         </div>
