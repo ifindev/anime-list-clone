@@ -42,7 +42,6 @@ src/
 │       │   └── anime-list.constants.ts     # Constants
 │       └── anime-detail/
 │           └── ...            # Similar structure as anime-list
-├── utils/            # Utility functions
 ├── main.tsx          # Application entry point
 ├── router.route.tsx  # Main router configuration
 └── index.css         # Global styles
