@@ -2,6 +2,8 @@
 
 A modern React application for browsing anime information built with React 19, TypeScript, Tailwind CSS, and React Query.
 
+https://github.com/user-attachments/assets/2ad99e9f-ebf1-40d1-abeb-f49cceaa070e
+
 ## Features
 
 - **Anime Browsing**: Search and browse through a comprehensive collection of anime titles
