@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import AnimeListView from './anime-list.view';
 
 const animeListRoute: RouteObject = {
-    path: '/',
+    path: '/anime',
     element: (
         <Suspense fallback={<div>Loading...</div>}>
             <AnimeListView />
