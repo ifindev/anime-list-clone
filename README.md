@@ -28,9 +28,8 @@ The project follows a modular MVVM (Model-View-ViewModel) architecture:
 ```
 src/
 ├── assets/           # Static assets like images and icons
-├── clients/          # API client configurations
-├── components/       # Reusable UI components
-├── hooks/            # Custom React hooks
+├── components/       # Reusable UI components app-wide usage
+├── hooks/            # Custom React hooks app-wide usage
 ├── modules/          # Feature modules (MVVM structure)
 │   └── anime/
 │       ├── anime-list/
@@ -98,14 +97,10 @@ This separation ensures clean code organization and improved maintainability.
 2. Install dependencies:
     ```bash
     npm install
-    # or
-    bun install
     ```
 3. Start the development server:
     ```bash
     npm run dev
-    # or
-    bun dev
     ```
 
 ### Scripts
