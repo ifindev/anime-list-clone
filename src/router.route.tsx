@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 
 import animeListRoute from './modules/anime/anime-list/anime-list.route';
 import animeDetailRoute from './modules/anime/anime-detail/anime-detail.route';
@@ -10,6 +10,10 @@ const routes = [animeListRoute, animeDetailRoute];
 
 const router = createBrowserRouter([
     ...routes,
+    {
+        path: '/',
+        element: <Navigate to="/anime" />,
+    },
     {
         path: '*',
         element: (
