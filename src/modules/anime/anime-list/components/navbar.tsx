@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 /**
  * Props for the navbar component
  */
@@ -14,7 +16,9 @@ export default function Navbar({ title, className = '' }: NavbarProps) {
         <nav
             className={`w-full bg-purple-700 py-5 px-6 md:px-10 sticky top-0 z-10 shadow-md ${className}`}
         >
-            <span className="text-white text-xl font-bold">{title}</span>
+            <Link to="/" className="text-white text-xl font-bold hover:cursor-pointer">
+                {title}
+            </Link>
         </nav>
     );
 }
