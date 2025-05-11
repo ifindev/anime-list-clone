@@ -1,54 +1,136 @@
-# React + TypeScript + Vite
+# YoPrint AList
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React application for browsing anime information built with React 19, TypeScript, Tailwind CSS, and React Query.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Anime Browsing**: Search and browse through a comprehensive collection of anime titles
+- **Detailed Information**: Access detailed information about each anime, including synopsis, rating, genres, and more
+- **Responsive Design**: Fully responsive UI that works well on desktop and mobile devices
+- **Search Functionality**: Search anime by title with debounced input
+- **Pagination**: Navigate through large result sets with an intuitive pagination system
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React 19**: Utilizing the latest React features
+- **TypeScript**: For type safety and better developer experience
+- **TanStack React Query**: For efficient server state management
+- **React Router v7**: For application routing
+- **Tailwind CSS**: For utility-first styling
+- **Vite**: For fast development and optimized build
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Project Structure
+
+The project follows a modular MVVM (Model-View-ViewModel) architecture:
+
+```
+src/
+├── assets/           # Static assets like images and icons
+├── clients/          # API client configurations
+├── components/       # Reusable UI components
+├── hooks/            # Custom React hooks
+├── modules/          # Feature modules (MVVM structure)
+│   └── anime/
+│       ├── anime-list/
+│       │   ├── components/    # Module-specific components
+│       │   ├── hooks/         # Module-specific hooks
+│       │   ├── anime-list.view.tsx         # UI component (View)
+│       │   ├── anime-list.view-model.ts    # Business logic (ViewModel)
+│       │   ├── anime-list.route.tsx        # Route definition
+│       │   ├── anime-list.types.ts         # Type definitions
+│       │   └── anime-list.constants.ts     # Constants
+│       └── anime-detail/
+│           └── ...            # Similar structure as anime-list
+├── utils/            # Utility functions
+├── main.tsx          # Application entry point
+├── router.route.tsx  # Main router configuration
+└── index.css         # Global styles
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Data Fetching
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The application uses React Query for efficient data fetching and state management:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+- **Custom Hooks**: Data fetching logic is encapsulated in custom hooks (e.g., `useGetAnimeList`, `useGetAnimeDetail`)
+- **Naming Convention**: Hooks follow a naming convention of `useGet[DataToFetch]` for fetching and `use[Action][ObjectForAction]` for mutations
+- **Caching**: Utilizes React Query's caching mechanisms for optimal performance
+- **Separation of Concerns**: Data fetching logic is separated from UI components
+
+Example:
+
+```typescript
+export function useGetAnimeList(debouncedSearch: string, page: number, limit: number) {
+    return useQuery<AnimeResponse>({
+        queryKey: ['animeSearch', debouncedSearch, page, limit],
+        queryFn: async () => {
+            // API call implementation
+        },
+        staleTime: CACHE_STALE_TIME,
+        gcTime: CACHE_GC_TIME,
+        refetchOnWindowFocus: false,
+    });
+}
 ```
+
+## Architecture Patterns
+
+The application follows the MVVM (Model-View-ViewModel) architecture:
+
+- **View**: UI components (`.view.tsx` files)
+- **ViewModel**: Business logic and state management (`.view-model.ts` files)
+- **Model**: Data structures and types (`.types.ts` files)
+- **Routes**: Route definitions (`.route.tsx` files)
+
+This separation ensures clean code organization and improved maintainability.
+
+## Development
+
+### Prerequisites
+
+- Node.js (v18+ recommended)
+- npm or Bun
+
+### Setup
+
+1. Clone the repository
+2. Install dependencies:
+    ```bash
+    npm install
+    # or
+    bun install
+    ```
+3. Start the development server:
+    ```bash
+    npm run dev
+    # or
+    bun dev
+    ```
+
+### Scripts
+
+- `dev`: Starts the development server
+- `build`: Builds the application for production
+- `preview`: Previews the production build locally
+- `lint`: Runs ESLint to check for issues
+- `format`: Formats code using Prettier
+
+## Styling
+
+The application uses Tailwind CSS for styling with a utility-first approach. Components accept a `className` prop to allow style overrides where needed.
+
+## Error Handling
+
+The application includes proper error handling and loading states for a smooth user experience, including:
+
+- Loading indicators during data fetching
+- Error boundaries to prevent app crashes
+- Not found page for invalid routes
+
+## Contributing
+
+Please follow these guidelines when contributing:
+
+- Use kebab-case for file and folder naming
+- Follow the MVVM architecture pattern
+- Use custom hooks for data fetching
+- Follow the established naming conventions
