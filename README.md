@@ -1,4 +1,4 @@
-# YoPrint AList
+# Anime List Clone
 
 A modern React application for browsing anime information built with React 19, TypeScript, Tailwind CSS, and React Query.
 
