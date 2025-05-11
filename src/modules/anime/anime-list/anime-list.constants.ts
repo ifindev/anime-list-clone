@@ -1,7 +1,7 @@
 /**
  * Available items per page options
  */
-export const ITEMS_PER_PAGE_OPTIONS = [5, 10, 15, 20, 25, 50];
+export const ITEMS_PER_PAGE_OPTIONS = [5, 10, 15, 20, 25];
 
 /**
  * Default pagination limit
