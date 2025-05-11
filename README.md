@@ -1,6 +1,6 @@
 # Anime List Clone
 
-A modern React application for browsing anime information built with React 19, TypeScript, Tailwind CSS, and React Query. See the deployed demo in https://animelisst.netlify.app
+A modern React application for browsing anime information built with React 19, TypeScript, Tailwind CSS, and React Query. See the deployed demo in https://anime-list-clone-one.vercel.app
 
 https://github.com/user-attachments/assets/2ad99e9f-ebf1-40d1-abeb-f49cceaa070e
 
